@@ -17,10 +17,11 @@
 default: &default
   enconding: unicode
   adapter: postgresql
-  host: localhost
-  username: muatsoft
-  password: "q1w2e3r4t5"
+  host: 192.168.33.1
+  port: 5433
   pool: 5
+  username: postgres
+  password: q1w2e3r4t5
 
 development:
   <<: *default
