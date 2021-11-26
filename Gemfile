@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'bootstrap', '~> 4.0.0'
+gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
