@@ -3,7 +3,11 @@ class TurmasController < ApplicationController
 
   # GET /turmas or /turmas.json
   def index
-    @turmas = current_utilizador.turmas
+    if current_utilizador.administrador?
+      @turmas = Turma.all
+    else
+      @turmas = current_utilizador.turmas
+    end
   end
 
   # GET /turmas/1 or /turmas/1.json

@@ -6,4 +6,9 @@ class Utilizador < ApplicationRecord
 
   has_many :turmas
   has_many :estudantes, through: :turmas
+
+  enum tipo_de_utilizador: {
+    docente: 0,
+    administrador: 1
+  }
 end

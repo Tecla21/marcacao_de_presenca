@@ -3,7 +3,11 @@ class EstudantesController < ApplicationController
 
   # GET /estudantes or /estudantes.json
   def index
-    @estudantes = current_utilizador.estudantes
+    if current_utilizador.administrador?
+      @estudantes = Estudante.all
+    else
+      @estudantes = current_utilizador.estudantes
+    end
   end
 
   # GET /estudantes/1 or /estudantes/1.json
