@@ -1,6 +1,6 @@
 <h1>Turmas</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Descrição</th>
@@ -14,9 +14,9 @@
       <tr>
         <td><%= turma.descricao %></td>
         <td><%= turma.utilizador.email %></td>
-        <td><%= link_to 'Show', turma %></td>
-        <td><%= link_to 'Edit', edit_turma_path(turma) %></td>
-        <td><%= link_to 'Destroy', turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', turma %></td>
+        <td><%= link_to 'Alterar', edit_turma_path(turma) %></td>
+        <td><%= link_to 'Eliminar', turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Turma', new_turma_path %>
+<%= link_to 'Nova Turma', new_turma_path %>

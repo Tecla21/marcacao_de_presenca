@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Estudantes</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Nome</th>
@@ -16,9 +14,9 @@
       <tr>
         <td><%= estudante.nome %></td>
         <td><%= estudante.telemovel %></td>
-        <td><%= link_to 'Show', estudante %></td>
-        <td><%= link_to 'Edit', edit_estudante_path(estudante) %></td>
-        <td><%= link_to 'Destroy', estudante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', estudante %></td>
+        <td><%= link_to 'Alterar', edit_estudante_path(estudante) %></td>
+        <td><%= link_to 'Eliminar', estudante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Estudante', new_estudante_path %>
+<%= link_to 'Novo Estudante', new_estudante_path %>

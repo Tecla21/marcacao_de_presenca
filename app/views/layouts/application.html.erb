@@ -9,70 +9,50 @@
   </head>
 
   <body>
-  <!-- Navigation -->
-  <% if utilizador_signed_in?%>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand text-white" href="#">MPCC</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link text-white" href="<%= root_url%>">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Utilizadores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="<%= turmas_url%>">Turmas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="<%= estudantes_url%>">Estudantes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Marcações</a>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Sair", destroy_utilizador_session_path, class: 'nav-link text-white', method: :delete  %>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <!-- Navigation -->
+    <% if utilizador_signed_in?%>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand text-white" href="#">MPCC</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white" href="<%= root_url%>">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<%= turmas_url%>">Turmas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<%= estudantes_url%>">Estudantes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Marcações</a>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "Sair", destroy_utilizador_session_path, class: 'nav-link text-white', method: :delete  %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navigation -->
 
-    <div class="my-5"></div>
+        <div class="my-5"></div>
 
-    <!-- Contact -->
-    <section class="container">
-      <p class="text-primary"><%= current_utilizador.email %></p>
+        <!-- Contact -->
+        <section class="container">
+        <p class="text-primary"><%= current_utilizador.email %></p>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
-    </section>
-    <!-- Contact -->
-
-
-    <!-- Footer -->
-    <footer class="footer bg-dark text-white">
-
-        <hr class="bg-white mx-4 mt-2 mb-1">
-
-        <!-- Copyright-->
-        <div class="container-fluid">
-            <p class="text-center m-0 py-1">
-                © 2017 Copyright <a href="#" class="text-white">Bootstrap-4</a>
-            </p>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-  <% else %>
-    <%= yield %>
-  <% end %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+        </section>
+        <!-- Contact -->
+    <% else %>
+        <%= yield %>
+    <% end %>
   </body>
 </html>
