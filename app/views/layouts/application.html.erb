@@ -32,7 +32,7 @@
                             <a class="nav-link text-white" href="#">Marcações</a>
                         </li>
                         <li class="nav-item">
-                            <%= link_to "Sair", destroy_utilizador_session_path, class: 'nav-link text-white', method: :delete  %>
+                            <%= link_to "#{current_utilizador.email} (Sair)", destroy_utilizador_session_path, class: 'nav-link text-white', method: :delete  %>
                         </li>
                     </ul>
                 </div>
@@ -44,7 +44,6 @@
 
         <!-- Contact -->
         <section class="container">
-        <p class="text-primary"><%= current_utilizador.email %></p>
 
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
