@@ -19,7 +19,7 @@
     <div class="col-md-3">
       <div class="card-counter info">
         <i class="fa fa-list"></i>
-        <span class="count-numbers">0</span>
+        <span class="count-numbers"><%= current_utilizador.marcacoes.count%></span>
         <span class="count-name">Marcações</span>
       </div>
     </div>
@@ -27,7 +27,7 @@
     <div class="col-md-3">
       <div class="card-counter danger">
         <i class="fa fa-close"></i>
-        <span class="count-numbers">0</span>
+        <span class="count-numbers"><%= current_utilizador.marcacao_do_estudantes_na_turma.ausente.count%></span>
         <span class="count-name">Faltas</span>
       </div>
     </div>

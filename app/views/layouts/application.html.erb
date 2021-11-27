@@ -13,7 +13,7 @@
     <% if utilizador_signed_in?%>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand text-white" href="#">MPCC</a>
+                <%= link_to "MPCC", root_url, class: 'navbar-brand text-white'  %>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -29,7 +29,7 @@
                             <a class="nav-link text-white" href="<%= estudantes_url%>">Estudantes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Marcações</a>
+                            <a class="nav-link text-white" href="<%= marcacoes_url%>">Marcações</a>
                         </li>
                         <li class="nav-item">
                             <%= link_to "#{current_utilizador.email} (Sair)", destroy_utilizador_session_path, class: 'nav-link text-white', method: :delete  %>

@@ -8,5 +8,24 @@
   <%= @turma.utilizador.email %>
 </p>
 
+<hr/>
 <%= link_to 'Alterar', edit_turma_path(@turma) %> |
 <%= link_to 'Voltar', turmas_path %>
+
+<table class="table table-bordred table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Telemovel</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @turma.estudantes.each do |estudante| %>
+      <tr>
+        <td><%= estudante.nome %></td>
+        <td><%= estudante.telemovel %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

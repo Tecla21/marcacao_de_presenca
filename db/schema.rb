@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211127160352) do
+ActiveRecord::Schema.define(version: 20211127163957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,24 @@ ActiveRecord::Schema.define(version: 20211127160352) do
     t.datetime "updated_at", null: false
     t.index ["estudante_id"], name: "index_estudantes_na_turma_on_estudante_id"
     t.index ["turma_id"], name: "index_estudantes_na_turma_on_turma_id"
+  end
+
+  create_table "marcacao_do_estudantes_na_turma", force: :cascade do |t|
+    t.bigint "marcacao_id"
+    t.bigint "estudante_na_turma_id"
+    t.integer "tipo_de_marcacao", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estudante_na_turma_id"], name: "index_marcacao_do_estudantes_na_turma_on_estudante_na_turma_id"
+    t.index ["marcacao_id"], name: "index_marcacao_do_estudantes_na_turma_on_marcacao_id"
+  end
+
+  create_table "marcacoes", force: :cascade do |t|
+    t.string "tema"
+    t.bigint "turma_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["turma_id"], name: "index_marcacoes_on_turma_id"
   end
 
   create_table "turmas", force: :cascade do |t|
@@ -54,5 +72,8 @@ ActiveRecord::Schema.define(version: 20211127160352) do
 
   add_foreign_key "estudantes_na_turma", "estudantes"
   add_foreign_key "estudantes_na_turma", "turmas"
+  add_foreign_key "marcacao_do_estudantes_na_turma", "estudantes_na_turma"
+  add_foreign_key "marcacao_do_estudantes_na_turma", "marcacoes"
+  add_foreign_key "marcacoes", "turmas"
   add_foreign_key "turmas", "utilizadores"
 end

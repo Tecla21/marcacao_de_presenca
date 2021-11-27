@@ -6,6 +6,8 @@ class Utilizador < ApplicationRecord
 
   has_many :turmas
   has_many :estudantes, through: :turmas
+  has_many :marcacoes, through: :turmas
+  has_many :marcacao_do_estudantes_na_turma, through: :marcacoes
 
   enum tipo_de_utilizador: {
     docente: 0,
