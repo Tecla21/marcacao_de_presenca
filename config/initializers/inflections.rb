@@ -14,3 +14,9 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+    inflect.irregular 'utilizador', 'utilizadores'
+    inflect.irregular 'turma', 'turmas'
+    inflect.irregular 'estudante', 'estudantes'
+    inflect.irregular 'estudante_na_turma', 'estudantes_na_turma'
+end

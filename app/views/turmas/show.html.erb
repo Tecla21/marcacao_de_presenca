@@ -1,0 +1,12 @@
+<p>
+  <strong>Descrição:</strong>
+  <%= @turma.descricao %>
+</p>
+
+<p>
+  <strong>Utilizador:</strong>
+  <%= @turma.utilizador.email %>
+</p>
+
+<%= link_to 'Edit', edit_turma_path(@turma) %> |
+<%= link_to 'Back', turmas_path %>
