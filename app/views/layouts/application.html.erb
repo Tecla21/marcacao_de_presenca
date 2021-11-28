@@ -52,7 +52,13 @@
         </section>
         <!-- Contact -->
     <% else %>
-        <%= yield %>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xs-12">
+                    <%= yield %>
+                </div>
+            </div>
+        </div>
     <% end %>
   </body>
 </html>
