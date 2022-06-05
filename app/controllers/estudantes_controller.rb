@@ -1,4 +1,5 @@
 class EstudantesController < ApplicationController
+  before_action :authenticate_utilizador!
   before_action :set_estudante, only: %i[ show edit update destroy ]
 
   # GET /estudantes or /estudantes.json

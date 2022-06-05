@@ -1,4 +1,5 @@
 class MarcacoesController < ApplicationController
+  before_action :authenticate_utilizador!
   before_action :set_marcacao, only: %i[ show edit update destroy ]
 
   # GET /marcacoes or /marcacoes.json

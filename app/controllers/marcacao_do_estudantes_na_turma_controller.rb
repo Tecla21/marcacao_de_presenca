@@ -1,4 +1,5 @@
 class MarcacaoDoEstudantesNaTurmaController < ApplicationController
+  before_action :authenticate_utilizador!
   before_action :set_marcacao, only: %i[ present, ausente, justificado ]
   before_action :set_marcacao_do_estudante_na_turma, only: %i[ show ]
 
