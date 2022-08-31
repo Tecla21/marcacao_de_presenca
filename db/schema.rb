@@ -10,70 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211127163957) do
+ActiveRecord::Schema.define(version: 20211127105144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "estudantes", force: :cascade do |t|
-    t.string "nome"
-    t.string "telemovel"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "estudantes_na_turma", force: :cascade do |t|
-    t.bigint "estudante_id"
-    t.bigint "turma_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["estudante_id"], name: "index_estudantes_na_turma_on_estudante_id"
-    t.index ["turma_id"], name: "index_estudantes_na_turma_on_turma_id"
-  end
-
-  create_table "marcacao_do_estudantes_na_turma", force: :cascade do |t|
-    t.bigint "marcacao_id"
-    t.bigint "estudante_na_turma_id"
-    t.integer "tipo_de_marcacao", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["estudante_na_turma_id"], name: "index_marcacao_do_estudantes_na_turma_on_estudante_na_turma_id"
-    t.index ["marcacao_id"], name: "index_marcacao_do_estudantes_na_turma_on_marcacao_id"
-  end
-
-  create_table "marcacoes", force: :cascade do |t|
-    t.string "tema"
-    t.bigint "turma_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["turma_id"], name: "index_marcacoes_on_turma_id"
-  end
-
-  create_table "turmas", force: :cascade do |t|
-    t.string "descricao"
-    t.bigint "utilizador_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["utilizador_id"], name: "index_turmas_on_utilizador_id"
-  end
-
   create_table "utilizadores", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "tipo_de_utilizador", default: "0", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "tipo_de_utilizador", default: 0, null: false
     t.index ["email"], name: "index_utilizadores_on_email", unique: true
     t.index ["reset_password_token"], name: "index_utilizadores_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "estudantes_na_turma", "estudantes"
-  add_foreign_key "estudantes_na_turma", "turmas"
-  add_foreign_key "marcacao_do_estudantes_na_turma", "estudantes_na_turma"
-  add_foreign_key "marcacao_do_estudantes_na_turma", "marcacoes"
-  add_foreign_key "marcacoes", "turmas"
-  add_foreign_key "turmas", "utilizadores"
 end

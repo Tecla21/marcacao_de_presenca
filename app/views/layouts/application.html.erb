@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Marcação de Presença</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>Marcação de Presença</title>
+        <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all' %>
+        <%= javascript_include_tag 'application' %>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    </head>
 
-  <body>
-    <!-- Navigation -->
-    <% if utilizador_signed_in?%>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <body>
+        <!-- Navigation -->
+        <% if utilizador_signed_in? %>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+                    <%= link_to "MPCC", root_url, class: 'navbar-brand text-white'  %>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link text-white" href="<%= root_url %>">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="<%= root_url %>">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="<%= root_url %>">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="<%= root_url %>">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <%= link_to "#{current_utilizador.email} (Sair)", destroy_utilizador_session_path, class: 'nav-link text-white', method: :delete  %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Contact -->
+            <section class="container">
+                <% flash.each do |key, value| %>
+                    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <%= value %>
+                    </div>
+                <% end %>
+                <%= yield %>
+            </section>
+            <!-- Contact -->
+        <% else %>
             <div class="container">
-                <%= link_to "MPCC", root_url, class: 'navbar-brand text-white'  %>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link text-white" href="<%= root_url%>">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="<%= turmas_url%>">Turmas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="<%= estudantes_url%>">Estudantes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="<%= marcacoes_url%>">Marcações</a>
-                        </li>
-                        <li class="nav-item">
-                            <%= link_to "#{current_utilizador.email} (Sair)", destroy_utilizador_session_path, class: 'nav-link text-white', method: :delete  %>
-                        </li>
-                    </ul>
+                <header>
+                    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                        <a class="navbar-brand" href="#">Voto Secreto</a>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active"><a class="nav-link" href="<%= root_url %>">Home</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="<%= utilizador_session_url %>">Entrar</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+                <div class="row justify-content-center">
+                    <div class="col-xs-12">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <%= yield %>
+                    </div>
                 </div>
             </div>
-        </nav>
-
-        <!-- Contact -->
-        <section class="container">
-            <% flash.each do |key, value| %>
-                <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <%= value %>
-                </div>
-            <% end %>
-            <%= yield %>
-        </section>
-        <!-- Contact -->
-    <% else %>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xs-12">
-                    <%= yield %>
-                </div>
-            </div>
-        </div>
-    <% end %>
-  </body>
+        <% end %>
+    </body>
 </html>
